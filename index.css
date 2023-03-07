@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+#catsquish-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#catsquish {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
