@@ -72,8 +72,11 @@ window.addEventListener("load", () => {
     }
 });
 
+const removeTime = 1000; // remove element after X time
+const fadeDelay = 300; // delay for triggering the fade out
+
 // mouse event on container
-catsquish_container.addEventListener('mousedown', () => {
+catsquish_container.addEventListener('mousedown', (e) => {
     reset(catsquish);
     // Delay for better reapeatability
     catsquish.style.animationDelay = "-100ms";
@@ -82,4 +85,24 @@ catsquish_container.addEventListener('mousedown', () => {
     playBounce();
     counter++;
     squishcounter[0].innerText = counter;
+
+    // +1 squish under cursor
+    const boxElement = document.createElement('div');
+    boxElement.classList.add("clicktext");
+    boxElement.style.top = `${e.clientY - 25}px`;
+    boxElement.style.left = `${e.clientX - 25}px`;
+
+    // Create a new text node containing the string "+1"
+    const textNode = document.createTextNode('+1');
+    boxElement.appendChild(textNode);
+
+    document.body.appendChild(boxElement);
+
+    // Fade out and remove the element after the specified time
+    setTimeout(() => {
+        boxElement.classList.add('fade-out');
+        setTimeout(() => {
+            boxElement.parentNode.removeChild(boxElement);
+        }, removeTime);
+    }, fadeDelay);
 });

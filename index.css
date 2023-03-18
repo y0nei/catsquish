@@ -3,6 +3,7 @@
     --sprite-height: 700px;
     --sprite-frames: 44;
     --animation-speed: 0.5s;
+    --click-text-fadeout: 600ms;
 }
 
 * { margin: 0; padding: 0; }
@@ -21,7 +22,6 @@ body {
     display: flex;
     margin-bottom: 30px;
     justify-content: center;
-    font-family: 'Segoe UI';
     font-size: 50px;
 }
 
@@ -57,6 +57,23 @@ body {
     background-color: #242424;
     pointer-events: none;
     animation: reveal 0.7s ease-in;
+    z-index: 1;
+}
+
+.clicktext {
+    width: 50px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    pointer-events: none;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity var(--click-text-fadeout) ease-in-out;
+    animation: moveUp var(--click-text-fadeout) ease-out;
 }
 
 /* ##########(KEYFRAMES)########## */
@@ -74,4 +91,8 @@ body {
     0% { opacity: 1; }
     70% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+@keyframes moveUp {
+    100% { transform: translateY(-70px); }
 }
