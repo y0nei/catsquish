@@ -5,14 +5,24 @@
 body {
     margin: 0;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+:root {
+    --sprite-width: 600px;
+    --sprite-height: 700px;
+    --sprite-frames: 44;
+    --animation-speed: 0.5s;
 }
 
 #catsquish-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: blue;
+    animation: boing var(--animation-speed) ease-in-out;
+    animation-delay: 100ms;
+    width: fit-content;
 }
 
 #catsquish-container:hover {
@@ -21,16 +31,10 @@ body {
 
 #squishcount {
     display: flex;
+    margin-bottom: 30px;
     justify-content: center;
     font-family: 'Segoe UI';
     font-size: 50px;
-}
-
-:root {
-    --sprite-width: 600px;
-    --sprite-height: 700px;
-    --sprite-frames: 44;
-    --animation-speed: 0.8s;
 }
 
 #catsquish {
@@ -38,9 +42,29 @@ body {
     width: var(--sprite-width);
     height: var(--sprite-height);
     animation: squish var(--animation-speed) steps(var(--sprite-frames));
+    animation-delay: -100ms;
     margin: 5px;
 }
 
 @keyframes squish {
-    100% { background-position: calc(-1 * var(--sprite-width) * var(--sprite-frames)); }
+    100% { background-position: calc(-1 * var(--sprite-width) * var(--sprite-frames));}
+}
+
+@keyframes boing {
+  15% {
+      transform: scale(1.1, 0.9);
+      transform-origin: center center;
+  }
+  40% {
+      transform: scale(0.95, 0.97);
+      transform-origin: center center;
+  }
+  60% {
+      transform: scale(1.02, 1);
+      transform-origin: center center;
+  }
+  90% {
+      transform: scale(1, 1);
+      transform-origin: center center;
+  }
 }

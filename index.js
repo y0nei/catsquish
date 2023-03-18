@@ -19,10 +19,13 @@ function reset(el) {
 window.addEventListener("load", () => {
     reset(catsquish);
     pause(catsquish);
+    reset(catsquish_container);
+    pause(catsquish_container);
 });
 
 catsquish_container.addEventListener('click', () => {
     reset(catsquish);
+    reset(catsquish_container);
     counter++;
     counterEl[0].innerText = counter;
 });
