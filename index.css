@@ -21,6 +21,37 @@ body {
 
 /* ##########(STYLING)########## */
 
+#notice{
+    background-color: #1e293b;
+    font-size: 14px;
+    padding: 3px 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.05)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+#notice svg { width: 18px; }
+#notice p { margin-left: 5px; }
+
+footer {
+    background-color: #1e293b;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 5px;
+    transition: 200ms ease-in;
+}
+footer svg { width: 25px;}
+footer:hover {
+    cursor: pointer;
+    background-color: #0e7490;
+    transition: 200ms ease-out;
+}
+
 #squishcount {
     display: flex;
     margin-bottom: 30px;
