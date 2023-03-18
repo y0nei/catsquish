@@ -1,16 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 :root {
     --sprite-width: 600px;
     --sprite-height: 700px;
@@ -18,18 +5,17 @@ body {
     --animation-speed: 0.5s;
 }
 
-#catsquish-container {
-    background-color: blue;
-    width: fit-content;
+* { margin: 0; padding: 0; }
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Cender everything */
+    justify-content: center;
+    align-items: center;
 }
 
-.anim-container {
-    animation: boing var(--animation-speed) ease-in-out;
-}
-
-#catsquish-container:hover {
-    cursor: pointer;
-}
+/* ##########(STYLING)########## */
 
 #squishcount {
     display: flex;
@@ -39,34 +25,35 @@ body {
     font-size: 50px;
 }
 
+#catsquish-container:hover { cursor: pointer; }
+#catsquish-container {
+    overflow: hidden;
+    border-radius: 25px;
+    background-color: #000;
+    width: fit-content;
+}
+
 #catsquish {
     background-image: url("./src/spritesheet.png");
     width: var(--sprite-width);
     height: var(--sprite-height);
     animation: squish var(--animation-speed) steps(var(--sprite-frames));
-    animation-delay: -100ms;
+    border-radius: 20px;
     margin: 5px;
 }
+
+.anim-container {
+    animation: boing var(--animation-speed) ease;
+    animation-delay: 100ms; /* Somewhat sync it with #catsquish animation */
+}
+
+/* ##########(KEYFRAMES)########## */
 
 @keyframes squish {
     100% { background-position: calc(-1 * var(--sprite-width) * var(--sprite-frames));}
 }
 
 @keyframes boing {
-  15% {
-      transform: scale(1.1, 0.9);
-      transform-origin: center center;
-  }
-  40% {
-      transform: scale(0.95, 0.97);
-      transform-origin: center center;
-  }
-  60% {
-      transform: scale(1.02, 1);
-      transform-origin: center center;
-  }
-  90% {
-      transform: scale(1, 1);
-      transform-origin: center center;
-  }
+    20% { transform: scale(1.2, 0.8); }
+    80% { transform: scale(1.0, 1.0); }
 }
