@@ -20,9 +20,11 @@ body {
 
 #catsquish-container {
     background-color: blue;
-    animation: boing var(--animation-speed) ease-in-out;
-    animation-delay: 100ms;
     width: fit-content;
+}
+
+.anim-container {
+    animation: boing var(--animation-speed) ease-in-out;
 }
 
 #catsquish-container:hover {

@@ -16,16 +16,53 @@ function reset(el) {
   el.style.animation = null;
 }
 
+// Audio controller (with overlapping)
+
+let maxAudioPlaying = 10
+let boingSound = "boing.mp3"
+let playingAudio = [];
+
+function playAudio() {
+  if (playingAudio.length < maxAudioPlaying) {
+    let audio = new Audio(boingSound);
+    audio.volume = 1;
+    playingAudio.push(audio);
+    audio.play();
+    audio.addEventListener('ended', function() {
+        var index = playingAudio.indexOf(audio);
+        if (index > -1) {
+            playingAudio.splice(index, 1);
+        }
+    });
+  }
+}
+
+// Bounce animation controller (with overalpping)
+
+let animElements = document.querySelectorAll(".anim-container");
+
+function playBounce() {
+    let notRunning = Array.from(animElements).filter(el => el.style.animationPlayState !== "running");
+
+    if (notRunning.length > 0) {
+        let nextAnimElement = notRunning[0];
+        reset(nextAnimElement);
+        play(nextAnimElement);
+        nextAnimElement.addEventListener("animationend", () => {
+            pause(nextAnimElement);
+        }, {once: true});
+    }
+}
+
 window.addEventListener("load", () => {
     reset(catsquish);
     pause(catsquish);
-    reset(catsquish_container);
-    pause(catsquish_container);
 });
 
 catsquish_container.addEventListener('click', () => {
     reset(catsquish);
-    reset(catsquish_container);
+    playAudio();
+    playBounce();
     counter++;
     counterEl[0].innerText = counter;
 });
