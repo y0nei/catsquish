@@ -1,8 +1,12 @@
 :root {
     --sprite-width: 600px;
     --sprite-height: 700px;
-    --sprite-frames: 44;
-    --animation-speed: 0.5s;
+
+    --sprite-columns: 11;
+    --sprite-rows: 4;
+    --sprite-frames: calc(var(--sprite-rows) * var(--sprite-columns));
+    --animation-speed: 500ms;
+
     --click-text-fadeout: 600ms;
 }
 
@@ -70,15 +74,29 @@ footer:hover {
     width: fit-content;
 }
 
+/* I spend way more time on this than i would like to admit.
+*  Here is a table to simplify what actually happens.
+*
+*  | animation property | value for X | value for Y |
+*  |--------------------|-------------|-------------|
+*  | name               | squishMoveX | squishMoveY |
+*  | duration           | 500ms / 4   | 500ms       |
+*  | iteration-count    | 4           | Unset       |
+*  | step count         | 11          | 4           |
+*
+*/
+
 #catsquish {
-    background-image: url("./src/spritesheet.png");
+    /* background-image: url("./src/spritesheet11x4_orig.webp"); */
+    background-image: url("./src/spritesheet11x4_half-quality.webp");
     width: var(--sprite-width);
     height: var(--sprite-height);
-    animation: squish var(--animation-speed) steps(var(--sprite-frames));
+    animation: squishMoveX calc(var(--animation-speed) / var(--sprite-rows)) steps(var(--sprite-columns)) 4,
+               squishMoveY var(--animation-speed) steps(var(--sprite-rows));
 }
 
 .anim-container {
-    animation: boing var(--animation-speed) ease;
+    animation: boing 500ms ease;
     animation-delay: 100ms; /* Somewhat sync it with #catsquish animation */
 }
 
@@ -113,8 +131,13 @@ footer:hover {
 
 /* ##########(KEYFRAMES)########## */
 
-@keyframes squish {
-    100% { background-position: calc(-1 * var(--sprite-width) * var(--sprite-frames));}
+@keyframes squishMoveX {
+    from { background-position-x: 0;}
+    to { background-position-x: calc(-1 * var(--sprite-width) * var(--sprite-columns));}
+}
+@keyframes squishMoveY {
+    from { background-position-y: 0;}
+    to { background-position-y: calc(-1 * var(--sprite-height) * var(--sprite-rows));}
 }
 
 @keyframes boing {
