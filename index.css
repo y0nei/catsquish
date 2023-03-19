@@ -63,7 +63,8 @@ footer:hover {
 #catsquish-container:hover { cursor: pointer; }
 #catsquish-container {
     overflow: hidden;
-    border-radius: 23px;
+    border: 3px solid #0f172a;
+    border-radius: 20px;
     background-color: #0f172a;
     filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.1)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.15));
     width: fit-content;
@@ -74,8 +75,6 @@ footer:hover {
     width: var(--sprite-width);
     height: var(--sprite-height);
     animation: squish var(--animation-speed) steps(var(--sprite-frames));
-    border-radius: 20px;
-    margin: 3px;
 }
 
 .anim-container {
