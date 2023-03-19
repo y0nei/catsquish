@@ -15,6 +15,7 @@ this means that if i would like to have a single row with 44 columns, the WebP i
 And WebP for this kind of sprite sheet is a must, the size from a png sprite sheet jumps from 18MB to just 1.4MB
 
 ### TODO:
-- [ ] More boing sounds
+- [x] More boing sounds
+- [ ] EVEN MORE BOING SOUNDS
 - [ ] Paw cursor
 - [ ] Make this an actual game with score tracking

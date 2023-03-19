@@ -24,13 +24,20 @@ function stop(el) {
 
 // Audio controller (with overlapping)
 
-let maxAudioPlaying = 10
-let boingSound = "boing.mp3"
+let maxAudioPlaying = 10;
+let boingSound = "boing.mp3";
+let squishSound = "squish.mp3";
 let playingAudio = [];
 
 function playAudio() {
     if (playingAudio.length < maxAudioPlaying) {
-        let audio = new Audio(boingSound);
+        let audio;
+        let rand = Math.random();
+        if (rand < 0.75) {
+            audio = new Audio(boingSound);
+        } else {
+            audio = new Audio(squishSound);
+        }
         audio.volume = 1;
         playingAudio.push(audio);
         audio.play();
